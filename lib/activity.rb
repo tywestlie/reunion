@@ -19,4 +19,17 @@ class Activity
     activity_cost
   end
 
+  def split_cost(cost)
+    cost / (@participants.keys.length)
+  end
+
+  def owed_owes(split_cost)
+    cost1 = split_cost(cost)
+    owed = {}
+    @participants.each do |name, paid|
+      owed[name] = (cost1 - paid)
+    end
+    owed
+  end
+
 end
